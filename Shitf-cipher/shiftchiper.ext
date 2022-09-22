@@ -1,0 +1,49 @@
+/*
+Nama		= Laura Azra Aprilyanti
+NPM			= 140810200036
+Deskripsi	= Program Shift Cipher
+*/
+
+#include <iostream>
+using namespace std;
+
+void encrypt(char text[], int key)
+{
+    char plaintext;
+
+	// traverse text
+	for (int i=0; text[i] != '\0';++i){
+        plaintext = text[i];
+
+		if (plaintext >= 'a' && plaintext <= 'z'){
+			plaintext = plaintext + key;
+			if (plaintext > 'z') {
+				plaintext = plaintext - 'z' + 'a' - 1;
+			}
+			text[i] = plaintext;
+		}
+		else if (plaintext >= 'A' && plaintext <= 'Z'){
+			plaintext = plaintext + key;
+			if (plaintext > 'Z') {
+					plaintext = plaintext - 'Z' + 'A' - 1;
+			}
+			text[i] = plaintext;
+		}
+    }
+	printf("\nHasil Enkripsi  : %s", text);
+}
+
+// Driver program to test the above function
+int main()
+{
+	char text[255];
+	int key;
+
+	cout << "Text : ";
+	cin.getline(text,255);
+
+	cout << "\nShift : ";
+	cin >> key;
+
+	encrypt(text, key);
+}
